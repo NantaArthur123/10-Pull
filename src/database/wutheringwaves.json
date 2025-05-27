@@ -1,0 +1,26 @@
+[
+  {
+    "id": "jinshi",
+    "name": {
+      "en": "Jin Shi",
+      "jp": "金氏",
+      "cn": "金氏"
+    },
+    "element": "Fusion",
+    "role": "DPS",
+    "rarity": 5,
+    "image": "/images/wutheringwaves/jinshi.jpg",
+    "skills": [
+      {
+        "name": {
+          "en": "Flame Whip",
+          "jp": "炎の鞭"
+        },
+        "description": {
+          "en": "Unleashes a whip of flames...",
+          "jp": "炎のムチを放つ..."
+        }
+      }
+    ]
+  }
+]
