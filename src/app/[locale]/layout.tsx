@@ -1,3 +1,5 @@
+import Sidebar from "@/components/Sidebar";
+import { SidebarProvider } from "@/components/SidebarContext";
 import { routing } from "@/i18n/routing";
 import { NextIntlClientProvider, hasLocale } from "next-intl";
 import { notFound } from "next/navigation";
@@ -10,7 +12,6 @@ export default async function LocaleLayout({
   children: React.ReactNode;
   params: { locale: string };
 }) {
-  // Ensure that the incoming `locale` is valid
   const { locale } = await params;
   if (!hasLocale(routing.locales, locale)) {
     notFound();
@@ -19,7 +20,15 @@ export default async function LocaleLayout({
   return (
     <html lang={locale}>
       <body>
-        <NextIntlClientProvider>{children}</NextIntlClientProvider>
+        <NextIntlClientProvider>
+          <SidebarProvider>
+            <div className="flex bg-midnight-500">
+              <Sidebar />
+
+              <div className="flex-1 md:ml-76">{children}</div>
+            </div>
+          </SidebarProvider>
+        </NextIntlClientProvider>
       </body>
     </html>
   );

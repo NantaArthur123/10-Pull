@@ -1,6 +1,34 @@
 {
-  "HomePage": {
-    "title": "Hello world!",
-    "about": "Go to the about page"
+  "homepage": {
+    "title": "สวัสดี ชาวโลก!!",
+    "about": "ไปหน้า เกี่ยวกับ"
+  },
+  "game": {
+    "wutheringwaves": "Wuthering Waves",
+    "genshin": "Genshin Impact",
+    "endfield": "Arknight Endfield",
+    "silverpalace": "Silver Palace",
+    "ananta": "Ananta",
+    "nte": "Neverness to Everness",
+    "starrail": "Honkai Star Rail"
+  },
+  "wutheringwaves": {
+    "characters": {
+      "zanni": "Zanni",
+      "phoebe": "Phoebe",
+      "encore": "Anko"
+    }
+  },
+  "common": {
+    "characters-ranking": "อันดับตัวละคร",
+    "game-ranking": "อันดับ เกม",
+    "vote-now": "โวทตอนนี้",
+    "general-post": "โพสต์ทั่วไป",
+    "search-placeholder": "ค้นหา..",
+    "copyright-notice": "© 2024 10 PULL. ALL RIGHT RESEVED"
+  },
+  "auth": {
+    "login": "เข้าสู่ระบบ",
+    "sign-up": "สมัครสมาชิก"
   }
 }

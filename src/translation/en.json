@@ -1,6 +1,56 @@
 {
-  "HomePage": {
-    "title": "Hello world!",
+  "homepage": {
+    "title": "Hello world!!",
     "about": "Go to the about page"
+  },
+  "game": {
+    "wutheringwaves": "Wuthering Waves",
+    "genshin": "Genshin Impact",
+    "endfield": "Arknight Endfield",
+    "silverpalace": "Silver Palace",
+    "ananta": "Ananta",
+    "nte": "Neverness to Everness",
+    "starrail": "Honkai Star Rail"
+  },
+  "wutheringwaves": {
+    "characters": {
+      "zanni": "Zanni",
+      "phoebe": "Phoebe",
+      "encore": "Anko"
+    },
+    "resonators": "Resonators",
+    "echoes": "Echoes",
+    "resonators-tier-list": "Resonators tier list",
+    "resonator-polls": "Resonator Polls"
+  },
+  "common": {
+    "characters-ranking": "Characters Ranking",
+    "game-ranking": "Game Ranking",
+    "vote-now": "Vote Now",
+    "general-post": "General Post",
+    "search-placeholder": "Search..",
+    "copyright-notice": "© 2024 10 PULL. ALL RIGHT RESEVED",
+    "codex": "Codex",
+    "weapons": "Weapons",
+    "items": "Items",
+    "post": "Posts",
+    "guide": "Guide",
+    "community": "Community"
+  },
+  "auth": {
+    "login": "Login",
+    "sign-up": "Sign Up"
+  },
+  "user-title": {
+    "supporter": "Supporter",
+    "donator": "Donator"
+  },
+  "language": {
+    "cn": "Chinese",
+    "en": "English",
+    "id": "Indonesian",
+    "jp": "Japanese",
+    "kr": "Korean",
+    "th": "Thailand"
   }
 }

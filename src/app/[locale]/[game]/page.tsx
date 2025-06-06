@@ -1,18 +1,23 @@
-import { useTranslations } from "next-intl";
+// app/[locale]/[game]/page.tsx
+import LanguageSwitcher from "@/components/LangSwitcher";
 import { notFound } from "next/navigation";
+import GameHomeClient from "./GameHomeClient";
+
 const validGames = ["wutheringwaves", "genshin", "arknights"];
 
-export default function GameHomePage({ params }: { params: { game: string } }) {
-  const { game } = params;
-  const t = useTranslations();
+export default async function GameHomePage({
+  params,
+}: {
+  params: { game: string };
+}) {
+  const { game } = await params; // ✅ await `params`
 
   if (!validGames.includes(game)) return notFound();
 
   return (
-    <main className="p-4">
-      <h1 className="text-3xl font-bold">
-        {t("title", { game: params.game })}
-      </h1>
-    </main>
+    <div>
+      <GameHomeClient game={game} />
+      <LanguageSwitcher />
+    </div>
   );
 }

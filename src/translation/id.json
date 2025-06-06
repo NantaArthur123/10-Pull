@@ -1,6 +1,13 @@
 {
   "HomePage": {
-    "title": "Hello world!",
+    "title": "Hello world!!",
     "about": "Go to the about page"
+  },
+  "Game": {
+    "wutheringwaves": "Wuthering Waves",
+    "genshin": "Genshin Impact",
+    "endfield": "Arknight Endfield",
+    "silverpalace": "Silver Palace",
+    "ananta": "Ananta"
   }
 }

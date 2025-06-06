@@ -1,6 +1,20 @@
 {
-  "HomePage": {
-    "title": "Hello world!",
-    "about": "Go to the about page"
+  "homepage": {
+    "title": "こんにちは、世界!!",
+    "about": "アバウトページへ"
+  },
+  "game": {
+    "wutheringwaves": "鳴潮",
+    "genshin": "原神",
+    "endfield": "アークナイツ：エンドフィールド",
+    "silverpalace": "銀の宮殿",
+    "ananta": "無限大"
+  },
+  "wutheringwaves": {
+    "characters": {
+      "zanni": "ザンニ",
+      "phoebe": "フィービー",
+      "encore": "アンコ"
+    }
   }
 }

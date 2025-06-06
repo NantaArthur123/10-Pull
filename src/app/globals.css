@@ -1,14 +1,29 @@
+@import url("https://fonts.googleapis.com/css2?family=Noto+Sans+JP:wght@100..900&family=Noto+Sans+KR:wght@100..900&family=Noto+Sans+SC:wght@100..900&family=Noto+Sans+Thai:wght@100..900&family=Noto+Sans:ital,wght@0,100..900;1,100..900&display=swap");
 @import "tailwindcss";
 
 :root {
-  --background: #ffffff;
+  --background: #171720;
   --foreground: #171717;
 }
 
 body {
   background: var(--background);
   color: var(--foreground);
-  font-family: Arial, Helvetica, sans-serif;
+  font-family: "Noto Sans", "Noto Sans JP", "Noto Sans KR", "Noto Sans SC",
+    "Noto Sans Thai", sans-serif;
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+}
+
+.bg-dot {
+  background-image: radial-gradient(
+      var(--color-midnight-500) 5%,
+      transparent 5%
+    ),
+    radial-gradient(var(--color-midnight-500) 5%, transparent 5%);
+  background-color: var(--color-midnight-700);
+  background-position: 40px 40px, 0px 0px;
+  background-size: 80px 80px;
 }
 
 @theme {
