@@ -191,12 +191,22 @@ export default function Sidebar() {
       {/* Mobile View */}
       <div className="md:hidden relative" ref={menuRef}>
         <div className="h-15 w-32 fixed bottom-3 z-20 left-1/2 -translate-x-1/2">
-          <div className="flex rounded-2xl bg-midnight-500 border border-midnight-100/10 h-full">
+          <div
+            className={`flex rounded-lg  border border-midnight-100/10 h-full transition-colors ${
+              isMenu ? "bg-midnight-400" : "bg-midnight-500"
+            }`}
+          >
             <button
               className="flex-col m-2 text-white text-center flex justify-center items-center w-full"
               onClick={() => setMenu(!isMenu)}
             >
-              <div className="bg-midnight-100 h-5 w-5 rounded mb-1"></div>
+              <div className="h-5 w-5 mb-1 flex justify-center items-center">
+                <div
+                  className={`bg-midnight-100 rounded transition-all ${
+                    isMenu ? "h-5 w-5" : "h-3 w-3"
+                  }`}
+                ></div>
+              </div>
               <span className="text-xs">MENU</span>
             </button>
           </div>
@@ -204,12 +214,12 @@ export default function Sidebar() {
         {/* Menu Open */}
         <div className="">
           <div
-            className={`z-19 flex border border-midnight-300/10 fixed bg-midnight-500 pb-20 rounded left-1/2 -translate-x-1/2 w-[400px] ${
+            className={`z-19 flex border border-midnight-300/10 fixed bg-midnight-500 pb-20 rounded left-1/2 -translate-x-1/2 w-[400px] max-w-[calc(100%-2rem)] ${
               isMenu ? "bottom-0" : "-bottom-full"
             } transition-all`}
           >
             <div className="">
-              <div className="flex-col items-center mx-4 my-2">
+              <div className="flex-col items-center mx-4 my-2 ">
                 {sidebar.group?.map((group) => (
                   <div key={group.group_name}>
                     {group.group_name && (
@@ -243,18 +253,21 @@ export default function Sidebar() {
                 ))}
                 {sidebar.search && (
                   <div className="flex-col mt-4">
-                    <h2 className="text-white font-bold">Util</h2>
+                    <h2 className="text-white font-bold">Search</h2>
                     <form className="p-2">
-                      <div className="relative w-full">
+                      <div className="relative w-full flex">
                         <input
                           type="text"
                           id="search"
-                          className="bg-midnight-500 rounded border border-midnight-200/30 p-1 w-full placeholder-midnight-300"
+                          className="bg-midnight-500 rounded-s border border-midnight-200/30 p-1 placeholder-midnight-300 grow"
                           placeholder={t("common.search-placeholder")}
                         />
+                        <button className="flex-none w-20 bg-midnight-400 border-y border-midnight-200/30 text-start px-2">
+                          ALL
+                        </button>
                         <button
                           type="submit"
-                          className="absolute top-0 end-0 h-full rounded-e bg-midnight-400 p-2"
+                          className="top-0 end-0 rounded-e bg-midnight-400 flex-none w-13 justify-center items-center flex border border-midnight-200/30"
                         >
                           <svg
                             className="w-4 h-4"
