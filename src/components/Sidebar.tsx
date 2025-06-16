@@ -129,7 +129,6 @@ export default function Sidebar() {
                                   }}
                                 />
                               )}
-
                               {/* Text above the icon */}
                               <div className="relative z-10 ml-7  group-hover:ml-8  transition-all">
                                 <span>{t(item.name || "")}</span>
@@ -141,7 +140,6 @@ export default function Sidebar() {
                     </ul>
                   </div>
                 ))}
-
                 {sidebar.search && (
                   <div className="text-white m-2 p-1 flex-col">
                     <form>
@@ -219,7 +217,7 @@ export default function Sidebar() {
             } transition-all`}
           >
             <div className="">
-              <div className="flex-col items-center mx-4 my-2 ">
+              <div className="flex-col items-center mx-4 my-2 flex">
                 {sidebar.group?.map((group) => (
                   <div key={group.group_name}>
                     {group.group_name && (
@@ -252,22 +250,37 @@ export default function Sidebar() {
                   </div>
                 ))}
                 {sidebar.search && (
-                  <div className="flex-col mt-4">
+                  <div className="flex-col mt-4 w-full">
                     <h2 className="text-white font-bold">Search</h2>
                     <form className="p-2">
-                      <div className="relative w-full flex">
+                      <div className="relative flex">
                         <input
                           type="text"
                           id="search"
-                          className="bg-midnight-500 rounded-s border border-midnight-200/30 p-1 placeholder-midnight-300 grow"
+                          className="bg-midnight-500 rounded-s border border-midnight-200/30 p-1 placeholder-midnight-300 focus:ring-0 focus:outline-0 w-15 grow text-white"
                           placeholder={t("common.search-placeholder")}
                         />
-                        <button className="flex-none w-20 bg-midnight-400 border-y border-midnight-200/30 text-start px-2">
-                          ALL
+                        <button className="w-22 flex-none bg-midnight-400 border-y border-midnight-200/30 text-xs px-2 inline-flex items-center justify-center text-white shrink-0">
+                          All Category
+                          <svg
+                            className="w-2.5 h-2.5 ms-2.5"
+                            aria-hidden="true"
+                            xmlns="http://www.w3.org/2000/svg"
+                            fill="none"
+                            viewBox="0 0 10 6"
+                          >
+                            <path
+                              stroke="currentColor"
+                              strokeLinecap="round"
+                              strokeLinejoin="round"
+                              strokeWidth="2"
+                              d="m1 1 4 4 4-4"
+                            />
+                          </svg>
                         </button>
                         <button
                           type="submit"
-                          className="top-0 end-0 rounded-e bg-midnight-400 flex-none w-13 justify-center items-center flex border border-midnight-200/30"
+                          className="w-15 flex top-0 end-0 rounded-e bg-midnight-400 justify-center items-center border border-midnight-200/30 shrink-0 text-white"
                         >
                           <svg
                             className="w-4 h-4"
