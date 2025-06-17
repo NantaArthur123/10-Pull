@@ -120,14 +120,17 @@ export default function Sidebar() {
                               {/* Icon behind text */}
                               {item.icon && (
                                 <div
-                                  className="absolute w-20 h-20 bg-midnight-500 group-hover:bg-white
+                                  className={`absolute w-20 h-20 
                                         transition-all duration-300 ease-in-out opacity-10 group-hover:opacity-80
-                                        mask mask-center mask-no-repeat mask-contain -translate-x-5 group-hover:-translate-x-3"
-                                  style={{
-                                    maskImage: `url(${item.icon})`,
-                                    WebkitMaskImage: `url(${item.icon})`,
-                                  }}
-                                />
+                                        -translate-x-5 group-hover:-translate-x-3
+                                        `}
+                                >
+                                  <img
+                                    src={item.icon}
+                                    alt=""
+                                    className="mask-alpha mask-r-from-black mask-r-from-50%"
+                                  />
+                                </div>
                               )}
                               {/* Text above the icon */}
                               <div className="relative z-10 ml-7  group-hover:ml-8  transition-all">

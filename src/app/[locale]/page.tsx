@@ -12,27 +12,27 @@ export default function HomePage() {
       search: true,
       group: [
         {
-          group_name: "Polls",
+          group_name: "Ranks",
           items: [
             {
               name: "common.characters-ranking",
               href: "/poll",
-              icon: "/images/poll.svg",
+              icon: "/images/general/ico_rank_chara.webp",
             },
             {
               name: "common.game-ranking",
               href: "/poll",
-              icon: "/images/star.svg",
+              icon: "/images/general/ico_rank_game.webp",
             },
             {
               name: "common.vote-now",
               href: "/poll",
-              icon: "/images/poll.svg",
+              icon: "/images/general/ico_vote.webp",
             },
           ],
         },
         {
-          group_name: "Post",
+          group_name: "Community",
           items: [
             {
               name: "common.general-post",
