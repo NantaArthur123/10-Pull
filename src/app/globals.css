@@ -13,7 +13,35 @@ body {
     "Noto Sans Thai", sans-serif;
   -webkit-font-smoothing: antialiased;
   -moz-osx-font-smoothing: grayscale;
+  
 }
+
+/* scrollbar */
+::-webkit-scrollbar {
+  width: 0.5rem;
+}
+
+::-webkit-scrollbar-track {
+  border-radius: 9999px;
+  background-color: theme('colors.midnight.100');
+}
+
+::-webkit-scrollbar-thumb {
+  border-radius: 9999px;
+  background-color: theme('colors.midnight.300');
+}
+
+/* scrollbar dark mode support */
+@media (prefers-color-scheme: dark) {
+  ::-webkit-scrollbar-track {
+    background-color: theme('colors.midnight.900');
+  }
+
+  ::-webkit-scrollbar-thumb {
+    background-color: theme('colors.midnight.400');
+  }
+}
+
 
 .bg-dot {
   background-image: radial-gradient(

@@ -92,21 +92,12 @@ export default function Sidebar() {
                   </button>
                 </div>
               </div>
-              <div
-                className=" grow overflow-y-auto
-            [&::-webkit-scrollbar]:w-2
-            [&::-webkit-scrollbar-track]:rounded-full
-            [&::-webkit-scrollbar-track]:bg-midnight-100
-            [&::-webkit-scrollbar-thumb]:rounded-full
-            [&::-webkit-scrollbar-thumb]:bg-midnight-300
-            dark:[&::-webkit-scrollbar-track]:bg-midnight-900
-            dark:[&::-webkit-scrollbar-thumb]:bg-midnight-400"
-              >
+              <div className=" grow overflow-y-auto">
                 {sidebar.group?.map((group) => (
                   <div key={group.group_name} className="p-2">
                     {group.group_name && (
                       <h2 className="text-white font-bold">
-                        {group.group_name}
+                        {t(group.group_name)}
                       </h2>
                     )}
                     <ul className="mt-2 space-y-2">
@@ -134,7 +125,7 @@ export default function Sidebar() {
                               )}
                               {/* Text above the icon */}
                               <div className="relative z-10 ml-7  group-hover:ml-8  transition-all">
-                                <span>{t(item.name || "")}</span>
+                                <span>{t(item.name!)}</span>
                               </div>
                             </a>
                           </div>
@@ -219,92 +210,117 @@ export default function Sidebar() {
               isMenu ? "bottom-0" : "-bottom-full"
             } transition-all`}
           >
-            <div className="">
+            <div>
               <div className="flex-col items-center mx-4 my-2 flex">
-                {sidebar.group?.map((group) => (
-                  <div key={group.group_name}>
-                    {group.group_name && (
-                      <div className="flex-col mt-4">
-                        <h2 className="text-white font-bold">
-                          {group.group_name}
-                        </h2>
-                        <div className="grid gap-2 grid-cols-5">
-                          {group.items?.map((item) => (
-                            <a href={item.href} key={item.name}>
-                              <div className="relative  aspect-square rounded  overflow-hidden p-2">
-                                {item.icon && (
-                                  <img
-                                    src={item.icon}
-                                    alt=""
-                                    className="rounded transition-transform bg-midnight-100"
-                                  />
+                <div className="px-4 py-2 m-2 bg-midnight-400 rounded flex-none w-full">
+                  <div className="flex flex-row gap-4 ">
+                    <img
+                      src="/images/wutheringwaves/icon.webp"
+                      alt=""
+                      className="rounded-full h-12"
+                    />
+                    <div className="h-full w-full">
+                      <h1 className="text-white truncate max-w-36">より良い</h1>
+                      <div className="text-midnight-200 text-sm w-full">
+                        Supporter
+                      </div>
+                    </div>
+                  </div>
+                  <div className="text-white p-2 flex flex-row gap-4 items-center justify-center">
+                    <button className="bg-amber-800 px-2 py-1 rounded min-w-20">
+                      {t("auth.login")}
+                    </button>
+                    <button className="bg-amber-800 px-2 py-1 rounded min-w-20">
+                      {t("auth.sign-up")}
+                    </button>
+                  </div>
+                </div>
+                <div className="max-h-80 overflow-auto">
+                  {sidebar.group?.map((group) => (
+                    <div key={group.group_name}>
+                      {group.group_name && (
+                        <div className="flex-col mt-4">
+                          <h2 className="text-white font-bold">
+                            {t(group.group_name)}
+                          </h2>
+                          <div className="grid gap-2 grid-cols-4">
+                            {group.items?.map((item) => (
+                              <a href={item.href} key={item.name}>
+                                <div className="relative  aspect-square rounded  overflow-hidden p-2">
+                                  {item.icon && (
+                                    <img
+                                      src={item.icon}
+                                      alt=""
+                                      className="rounded transition-transform bg-midnight-100"
+                                    />
+                                  )}
+                                </div>
+                                {item.name && (
+                                  <h1 className="text-xs bottom-0  left-0 right-0 text-white text-center">
+                                    {t(item.name)}
+                                  </h1>
                                 )}
-                              </div>
-                              {item.name && (
-                                <h1 className="text-xs bottom-0  left-0 right-0 text-white text-center">
-                                  {t(item.name)}
-                                </h1>
-                              )}
-                            </a>
-                          ))}
+                              </a>
+                            ))}
+                          </div>
                         </div>
-                      </div>
-                    )}
-                  </div>
-                ))}
-                {sidebar.search && (
-                  <div className="flex-col mt-4 w-full">
-                    <h2 className="text-white font-bold">Search</h2>
-                    <form className="p-2">
-                      <div className="relative flex">
-                        <input
-                          type="text"
-                          id="search"
-                          className="bg-midnight-500 rounded-s border border-midnight-200/30 p-1 placeholder-midnight-300 focus:ring-0 focus:outline-0 w-15 grow text-white"
-                          placeholder={t("common.search-placeholder")}
-                        />
-                        <button className="w-22 flex-none bg-midnight-400 border-y border-midnight-200/30 text-xs px-2 inline-flex items-center justify-center text-white shrink-0">
-                          All Category
-                          <svg
-                            className="w-2.5 h-2.5 ms-2.5"
-                            aria-hidden="true"
-                            xmlns="http://www.w3.org/2000/svg"
-                            fill="none"
-                            viewBox="0 0 10 6"
+                      )}
+                    </div>
+                  ))}
+                  {sidebar.search && (
+                    <div className="flex-col mt-4 w-full">
+                      <h2 className="text-white font-bold">Search</h2>
+                      <form className="p-2">
+                        <div className="relative flex">
+                          <input
+                            type="text"
+                            id="search"
+                            className="bg-midnight-500 rounded-s border border-midnight-200/30 p-1 placeholder-midnight-300 focus:ring-0 focus:outline-0 w-15 grow text-white"
+                            placeholder={t("common.search-placeholder")}
+                          />
+                          <button className="w-22 flex-none bg-midnight-400 border-y border-midnight-200/30 text-xs px-2 inline-flex items-center justify-center text-white shrink-0">
+                            All Category
+                            <svg
+                              className="w-2.5 h-2.5 ms-2.5"
+                              aria-hidden="true"
+                              xmlns="http://www.w3.org/2000/svg"
+                              fill="none"
+                              viewBox="0 0 10 6"
+                            >
+                              <path
+                                stroke="currentColor"
+                                strokeLinecap="round"
+                                strokeLinejoin="round"
+                                strokeWidth="2"
+                                d="m1 1 4 4 4-4"
+                              />
+                            </svg>
+                          </button>
+                          <button
+                            type="submit"
+                            className="w-15 flex top-0 end-0 rounded-e bg-midnight-400 justify-center items-center border border-midnight-200/30 shrink-0 text-white"
                           >
-                            <path
-                              stroke="currentColor"
-                              strokeLinecap="round"
-                              strokeLinejoin="round"
-                              strokeWidth="2"
-                              d="m1 1 4 4 4-4"
-                            />
-                          </svg>
-                        </button>
-                        <button
-                          type="submit"
-                          className="w-15 flex top-0 end-0 rounded-e bg-midnight-400 justify-center items-center border border-midnight-200/30 shrink-0 text-white"
-                        >
-                          <svg
-                            className="w-4 h-4"
-                            aria-hidden="true"
-                            xmlns="http://www.w3.org/2000/svg"
-                            fill="none"
-                            viewBox="0 0 20 20"
-                          >
-                            <path
-                              stroke="currentColor"
-                              strokeLinecap="round"
-                              strokeLinejoin="round"
-                              strokeWidth="2"
-                              d="m19 19-4-4m0-7A7 7 0 1 1 1 8a7 7 0 0 1 14 0Z"
-                            />
-                          </svg>
-                        </button>
-                      </div>
-                    </form>
-                  </div>
-                )}
+                            <svg
+                              className="w-4 h-4"
+                              aria-hidden="true"
+                              xmlns="http://www.w3.org/2000/svg"
+                              fill="none"
+                              viewBox="0 0 20 20"
+                            >
+                              <path
+                                stroke="currentColor"
+                                strokeLinecap="round"
+                                strokeLinejoin="round"
+                                strokeWidth="2"
+                                d="m19 19-4-4m0-7A7 7 0 1 1 1 8a7 7 0 0 1 14 0Z"
+                              />
+                            </svg>
+                          </button>
+                        </div>
+                      </form>
+                    </div>
+                  )}
+                </div>
               </div>
             </div>
           </div>
