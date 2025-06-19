@@ -20,7 +20,7 @@ export default async function LocaleLayout({
   return (
     <html lang={locale}>
       <body>
-        <NextIntlClientProvider>
+        <NextIntlClientProvider locale={locale}>
           <SidebarProvider>
             <div className="flex bg-midnight-500">
               <Sidebar />
@@ -32,4 +32,14 @@ export default async function LocaleLayout({
       </body>
     </html>
   );
+}
+export function generateStaticParams() {
+  return [
+    { locale: "en" },
+    { locale: "cn" },
+    { locale: "id" },
+    { locale: "jp" },
+    { locale: "kr" },
+    { locale: "th" },
+  ];
 }

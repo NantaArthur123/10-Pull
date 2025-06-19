@@ -9,7 +9,10 @@
     "lint": "next lint"
   },
   "dependencies": {
+    "@headlessui/react": "^2.2.4",
+    "clsx": "^2.1.1",
     "flag-icons": "^7.5.0",
+    "motion": "^12.18.1",
     "next": "15.3.2",
     "next-intl": "^4.1.0",
     "react": "^19.0.0",

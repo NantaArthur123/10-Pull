@@ -207,7 +207,9 @@ export default function Sidebar() {
         <div className="">
           <div
             className={`z-19 flex border border-midnight-300/10 fixed bg-midnight-500 pb-20 rounded left-1/2 -translate-x-1/2 w-[400px] max-w-[calc(100%-2rem)] ${
-              isMenu ? "bottom-0" : "-bottom-full"
+              isMenu
+                ? "bottom-0 translate-y-0"
+                : "-bottom-full translate-y-full"
             } transition-all`}
           >
             <div>
