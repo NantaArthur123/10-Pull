@@ -52,7 +52,7 @@ const temp_engine_placeholder: comboboxtypes[] = [
   { id: 10, name: `Other` },
 ];
 
-export default function page() {
+export default function Page() {
   const { setSidebar } = useSidebar();
   const t = useTranslations(); // later use
   const locale = useLocale(); //later use
@@ -66,6 +66,7 @@ export default function page() {
   const [engineQuery, setEngineQuery] = useState("");
   const [notSureEngine, setNotSureEngine] = useState(false);
   const [notSureDev, setNotSureDev] = useState(false);
+  const [TBA, setTBA] = useState(false);
 
   const isOtherDev = dev?.name === "Other";
   const isOtherEngine = engine?.name === "Other";
@@ -107,12 +108,36 @@ export default function page() {
   }, [setSidebar]);
 
   return (
-    <div className="w-full flex flex-wrap justify-center items-center lg:flex-row flex-col">
+    <div className="w-full flex justify-center items-center lg:flex-row flex-col">
       <div className="flex-1 bg-midnight-600 m-4 rounded p-2">
         <form action="" method="post">
-          <h1 className="my-4 text-2xl font-black text-amber-200 ms-2">
+          <h1 className="mt-4 text-2xl font-black text-amber-200 ms-2">
             Game Editor
           </h1>
+          <div
+            className={clsx(
+              "text-white ms-2 text-sm bg-midnight-100/10 rounded p-2",
+              "dark:text-midnight-100"
+            )}
+          >
+            <ul>
+              <li>
+                Start by creating a Game category if you want to add a new game.
+              </li>
+              <li>Later, you can attach items to that Game category.</li>
+              <li>
+                "Items" isn't just for item like what it sounds, it can also
+                include characters, artifacts, awards, and more.
+              </li>
+              <li>
+                You can reference an item in a guide using{" "}
+                <code className={clsx("bg-midnight-900/40 px-1")}>
+                  &lt;id:itemid /&gt;
+                </code>
+                .
+              </li>
+            </ul>
+          </div>
 
           <div className="flex flex-col gap-2  text-midnight-200 px-2">
             <div className="">
@@ -195,10 +220,39 @@ export default function page() {
                   type="text"
                   name="developer"
                   id="developer"
-                  className="bg-midnight-400 w-full rounded border border-midnight-200/30 placeholder:text-midnight-300 p-1"
+                  className={clsx(
+                    "bg-midnight-400 w-full rounded border border-midnight-200/30 placeholder:text-midnight-300 p-1",
+                    "disabled:hidden"
+                  )}
                   placeholder="HoYoverse"
                   maxLength={50}
+                  disabled={notSureDev}
                 />
+                <label className="flex items-center gap-2 mt-2 text-midnight-300 text-sm cursor-pointer">
+                  <div className="relative w-12 h-12 flex items-center justify-center">
+                    <div className="relative w-5 h-5">
+                      <input
+                        type="checkbox"
+                        checked={notSureDev}
+                        onChange={(e) => setNotSureDev(e.target.checked)}
+                        className="peer appearance-none w-full h-full bg-white border border-gray-300 rounded-sm checked:bg-blue-500 checked:border-blue-500 focus:outline-none"
+                      />
+                      <svg
+                        className="pointer-events-none absolute inset-0 stroke-white opacity-0 peer-checked:opacity-100"
+                        viewBox="0 0 14 14"
+                        fill="none"
+                      >
+                        <path
+                          d="M3 8L6 11L11 3.5"
+                          strokeWidth={2}
+                          strokeLinecap="round"
+                          strokeLinejoin="round"
+                        />
+                      </svg>
+                    </div>
+                  </div>
+                  <span>Not sure</span>
+                </label>
               </div>
             )}
             <div>
@@ -254,15 +308,19 @@ export default function page() {
             {isOtherEngine && (
               <div>
                 <label htmlFor="" className="block font-bold">
-                  Game Engine (Optional)
+                  Other Game Engine
                 </label>
                 <input
                   type="text"
                   name="developer"
                   id="developer"
-                  className="bg-midnight-400 w-full rounded border border-midnight-200/30 placeholder:text-midnight-300 p-1 mt-2"
+                  className={clsx(
+                    "bg-midnight-400 w-full rounded border border-midnight-200/30 placeholder:text-midnight-300 p-1 mt-2",
+                    "disabled:hidden"
+                  )}
                   placeholder="Other game engine"
                   maxLength={50}
+                  disabled={notSureEngine}
                 />
                 <label className="flex items-center gap-2 mt-2 text-midnight-300 text-sm cursor-pointer">
                   <div className="relative w-12 h-12 flex items-center justify-center">
@@ -302,30 +360,68 @@ export default function page() {
                 className={clsx(
                   " rounded-lg border-none bg-white/10 py-1.5 px-3 text-sm/6 text-midnight-200",
                   "focus:not-data-focus:outline-none data-focus:outline-1 data-focus:-outline-offset-2 data-focus:outline-white/25",
-                  "dark:bg-midnight-400/50 dark:text-midnight-200"
+                  "dark:bg-midnight-400/50 dark:text-midnight-200",
+                  "disabled:hidden"
                 )}
+                disabled={TBA}
                 defaultValue={new Date().toISOString().split("T")[0]}
               />
+              <label className="flex items-center gap-2 mt-2 text-midnight-300 text-sm cursor-pointer">
+                <div className="relative w-12 h-12 flex items-center justify-center">
+                  <div className="relative w-5 h-5">
+                    <input
+                      type="checkbox"
+                      checked={TBA}
+                      onChange={(e) => setTBA(e.target.checked)}
+                      className="peer appearance-none w-full h-full bg-white border border-gray-300 rounded-sm checked:bg-blue-500 checked:border-blue-500 focus:outline-none"
+                    />
+                    <svg
+                      className="pointer-events-none absolute inset-0 stroke-white opacity-0 peer-checked:opacity-100"
+                      viewBox="0 0 14 14"
+                      fill="none"
+                    >
+                      <path
+                        d="M3 8L6 11L11 3.5"
+                        strokeWidth={2}
+                        strokeLinecap="round"
+                        strokeLinejoin="round"
+                      />
+                    </svg>
+                  </div>
+                </div>
+                <span>No Released Date/TBA</span>
+              </label>
             </div>
 
             <div>
               <label htmlFor="" className="block font-bold">
                 Game Icon
               </label>
-              <input
-                type="text"
-                name="developer"
-                id="developer"
-                className={clsx(
-                  "w-full rounded-lg border-none bg-white/10 py-1.5 px-3 text-sm/6 text-midnight-200",
-                  "focus:not-data-focus:outline-none data-focus:outline-1 data-focus:-outline-offset-2 data-focus:outline-white/25",
-                  "dark:bg-midnight-400/50 dark:text-midnight-200"
-                )}
-                placeholder="Use global name, Ex: Mihoyo, Hypergryph"
-                maxLength={50}
-              />
+              <div className="flex flex-row h-40 gap-4">
+                <div className="flex flex-col flex-2/3">
+                  <input
+                    type="text"
+                    name="developer"
+                    id="developer"
+                    className={clsx(
+                      "rounded-lg border-none bg-white/10 py-1.5 px-3 text-sm/6 text-midnight-200 grow",
+                      "focus:not-data-focus:outline-none data-focus:outline-1 data-focus:-outline-offset-2 data-focus:outline-white/25",
+                      "dark:bg-midnight-400/50 dark:text-midnight-200"
+                    )}
+                    placeholder="Click here or drag and drop image file"
+                    maxLength={50}
+                  />
+                </div>
+                <div className="h-full flex justify-center items-center flex-1/3 ">
+                  <img
+                    src="/images/general/ico_rank_game.webp"
+                    alt=""
+                    className="object-contain h-full w-full max-w-[167px] max-h-[167px]"
+                  />
+                </div>
+              </div>
               <span className="text-midnight-300 text-sm">
-                Game icon need to be 162 x 162 pixel, and under 300 kb in size
+                Game icon need to be 167 x 167 pixel, and under 300 kb
               </span>
             </div>
           </div>
