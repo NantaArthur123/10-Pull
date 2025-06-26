@@ -206,7 +206,7 @@ export default function Sidebar() {
         {/* Menu Open */}
         <div className="">
           <div
-            className={`z-19 flex border border-midnight-300/10 fixed bg-midnight-500 pb-20 rounded left-1/2 -translate-x-1/2 w-[400px] max-w-[calc(100%-2rem)] ${
+            className={`z-19 flex border border-midnight-300/10 fixed bg-midnight-500 pb-0 rounded left-1/2 -translate-x-1/2 w-[400px] max-w-[calc(100%-2rem)] ${
               isMenu
                 ? "bottom-0 translate-y-0"
                 : "-bottom-full translate-y-full"
@@ -269,6 +269,28 @@ export default function Sidebar() {
                       )}
                     </div>
                   ))}
+                  <div className="flex flex-row h-20">
+                    <div>
+                      <div className="grid gap-2 grid-cols-4">
+                        <a href="">
+                          <div className="relative  aspect-square rounded  overflow-hidden p-2">
+                            <img
+                              src="/images/poll.svg"
+                              alt=""
+                              className="rounded transition-transform bg-midnight-100"
+                            />
+                          </div>
+                          <h1 className="text-xs bottom-0  left-0 right-0 text-white text-center">
+                            Home
+                          </h1>
+                        </a>
+                      </div>
+                    </div>
+                    <div className="w-32"></div>
+                    <div className="grow flex items-center justify-center">
+                      c
+                    </div>
+                  </div>
                   {sidebar.search && (
                     <div className="flex-col mt-4 w-full">
                       <h2 className="text-white font-bold">Search</h2>

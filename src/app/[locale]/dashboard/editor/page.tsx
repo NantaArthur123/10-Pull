@@ -58,10 +58,8 @@ export default function Page() {
   const locale = useLocale(); //later use
 
   // Form
-  const [dev, setDev] = useState<comboboxtypes | null>(temp_dev_placeholder[0]);
-  const [engine, setEngine] = useState<comboboxtypes | null>(
-    temp_engine_placeholder[0]
-  );
+  const [dev, setDev] = useState<comboboxtypes | null>();
+  const [engine, setEngine] = useState<comboboxtypes | null>();
   const [devQuery, setDevQuery] = useState("");
   const [engineQuery, setEngineQuery] = useState("");
   const [notSureEngine, setNotSureEngine] = useState(false);
@@ -166,8 +164,7 @@ export default function Page() {
                 Developer
               </label>
               <Combobox
-                value={dev}
-                onChange={(value) => setDev(value)}
+                onChange={(value) => setDev(value as comboboxtypes)}
                 onClose={() => setDevQuery("")}
               >
                 <div className="relative">
@@ -180,6 +177,13 @@ export default function Page() {
                     displayValue={(dev: comboboxtypes) => dev?.name}
                     onChange={(event) => setDevQuery(event.target.value)}
                   />
+
+                  {!devQuery && !dev && (
+                    <span className="absolute left-3 top-1/2 -translate-y-1/2 text-sm text-midnight-300 pointer-events-none">
+                      Select Developer...
+                    </span>
+                  )}
+
                   <ComboboxButton className="group absolute inset-y-0 right-0 px-2.5">
                     <FiChevronDown className="size-4 fill-white/60 group-data-hover:fill-white" />
                   </ComboboxButton>
@@ -260,8 +264,7 @@ export default function Page() {
                 Game Engine*
               </label>
               <Combobox
-                value={engine}
-                onChange={(value) => setEngine(value)}
+                onChange={(value) => setEngine(value as comboboxtypes)}
                 onClose={() => setEngineQuery("")}
               >
                 <div className="relative">
@@ -274,6 +277,13 @@ export default function Page() {
                     displayValue={(engine: comboboxtypes) => engine?.name}
                     onChange={(event) => setEngineQuery(event.target.value)}
                   />
+
+                  {!engineQuery && !engine && (
+                    <span className="absolute left-3 top-1/2 -translate-y-1/2 text-sm text-midnight-300 pointer-events-none">
+                      Select Game Engine...
+                    </span>
+                  )}
+
                   <ComboboxButton className="group absolute inset-y-0 right-0 px-2.5">
                     <FiChevronDown className="size-4 fill-white/60 group-data-hover:fill-white" />
                   </ComboboxButton>
