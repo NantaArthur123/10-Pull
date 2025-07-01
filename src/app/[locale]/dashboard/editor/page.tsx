@@ -14,43 +14,7 @@ import clsx from "clsx";
 import { useLocale, useTranslations } from "next-intl";
 import { useEffect, useState } from "react";
 import { FiCheck, FiChevronDown } from "react-icons/fi";
-
-// Replace this with database later :D
-const temp_dev_placeholder: comboboxtypes[] = [
-  { id: 1, name: `HoYoverse` },
-  { id: 2, name: `Kuro Games` },
-  { id: 3, name: `Papergames` },
-  { id: 4, name: `SHIFT UP` },
-  { id: 5, name: `Hypergryph` },
-  { id: 6, name: `Yostar` },
-  { id: 7, name: `Aniplex` },
-  { id: 8, name: `Bandai Namco` },
-  { id: 9, name: `DeNA` },
-  { id: 10, name: `Bluepoch` },
-  { id: 11, name: `GungHo` },
-  { id: 12, name: `Cygames` },
-  { id: 13, name: `XFLAG` },
-  { id: 14, name: `Level Infinite` },
-  { id: 15, name: `Devsisters` },
-  { id: 16, name: `PONOS` },
-  { id: 17, name: `Com2uS` },
-  { id: 18, name: `NetEase` },
-  { id: 19, name: `NEXON` },
-  { id: 20, name: `Other` },
-];
-
-const temp_engine_placeholder: comboboxtypes[] = [
-  { id: 1, name: `Cocos2D` },
-  { id: 2, name: `CryEngine` },
-  { id: 3, name: `Frostbite` },
-  { id: 4, name: `GameMaker Studio` },
-  { id: 5, name: `Godot` },
-  { id: 6, name: `RPG Maker` },
-  { id: 7, name: `Source Engine` },
-  { id: 8, name: `Unity` },
-  { id: 9, name: `Unreal Engine` },
-  { id: 10, name: `Other` },
-];
+import { getAllDeveloper, getAllEngine } from "./controller/controller";
 
 export default function Page() {
   const { setSidebar } = useSidebar();
@@ -58,6 +22,9 @@ export default function Page() {
   const locale = useLocale(); //later use
 
   // Form
+  const [developers, setDevelopers] = useState<comboboxtypes[]>([]);
+  const [engines, setEngines] = useState<comboboxtypes[]>([]);
+  const [loading, setLoading] = useState(true);
   const [dev, setDev] = useState<comboboxtypes | null>();
   const [engine, setEngine] = useState<comboboxtypes | null>();
   const [devQuery, setDevQuery] = useState("");
@@ -69,8 +36,29 @@ export default function Page() {
   const isOtherDev = dev?.name === "Other";
   const isOtherEngine = engine?.name === "Other";
 
-  const filterDev = filterPls(temp_dev_placeholder, devQuery);
-  const filterEngine = filterPls(temp_engine_placeholder, engineQuery);
+  useEffect(() => {
+    async function fetchData() {
+      try {
+        const [developers, engines] = await Promise.all([
+          getAllDeveloper(),
+          getAllEngine(),
+        ]);
+        setDevelopers(developers);
+        setEngines(engines);
+      } catch (error) {
+        console.error("Failed: ", error);
+      } finally {
+        setLoading(false);
+      }
+    }
+
+    fetchData();
+  }, []);
+  console.log("Developers: ", developers);
+  console.log("Engines: ", engines);
+
+  const filterDev = filterPls(developers, devQuery);
+  const filterEngine = filterPls(engines, engineQuery);
 
   useEffect(() => {
     setSidebar({

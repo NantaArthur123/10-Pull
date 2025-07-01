@@ -1,6 +1,6 @@
 "use client";
 
-import { database } from "@/lib/databaseClient";
+import { database } from "@/lib/database/client";
 import { useEffect, useState } from "react";
 
 export default function TestSupabase() {
